@@ -11,13 +11,5 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    header.navbar.navbar-fixed-top.navbar-inverse
-      div.navbar-inner
-        div.container
-          = link_to "Sample app", static_pages_home_path
-          ul.nav.pull-rigth
-            li = link_to "Home"
-            li = link_to "Help"
-            li = link_to "Sign in"
-    div class="container"
+    div.container
       = yield
