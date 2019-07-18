@@ -11,5 +11,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    div.container
+    = render 'layouts/header'
+    .container
       = yield
+    = render 'layouts/footer'
