@@ -1,0 +1,10 @@
+- provide(:title, 'Sample App')
+div class="center hero-unit"
+
+  h1 Home
+  h2
+    | This is the home page for the
+    = link_to ' Ruby on Rails Tutorial ', "http://railstutorial.org/"
+    | sample application.
+  = link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary"
+= link_to image_tag("rails-logo.svg", alt: "Rails"), 'http://rubyonrails.org/'
