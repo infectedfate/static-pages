@@ -24,6 +24,9 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+  
+  def edit
+  end
 
   def create
     @user = User.create(user_params)
