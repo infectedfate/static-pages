@@ -2,13 +2,25 @@ require 'rails_helper'
 
 RSpec.describe "UserPages" do
   describe "User pages" do
-    subject { page }
 
-    describe "signup page" do
-      before { visit signup_path }
+  subject { page }
 
-      it { should have_content('Sign up') }
-      it { should have_title(full_title('Sign up')) }
+  describe "index" do
+    before do
+      sign_in FactoryGirl.create(:user)
+      FactoryGirl.create(:user, name: "Bob", email: "bob@example.com")
+      FactoryGirl.create(:user, name: "Ben", email: "ben@example.com")
+      visit users_path
+    end
+
+    it { should have_title('All users') }
+    it { should have_content('All users') }
+
+    it "should list each user" do
+      User.all.each do |user|
+        expect(page).to have_selector('li', text: user.name)
+        end
+      end
     end
   end
 end
