@@ -2,9 +2,11 @@ class UsersController < ApplicationController
 
   before_action :set_user, only: %i[show destroy update edit]
   before_action :logged_in_user, only: %i[edit update]
+  before_action :admin_user,     only: :destroy
+
 
   def index
-    @users = User.all
+    @users = User.paginate(page: params[:page])
   end
 
   def new
@@ -45,6 +47,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
 
   def set_user
     @user = User.find(params[:id])
